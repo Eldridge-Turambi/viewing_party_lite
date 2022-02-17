@@ -7,6 +7,9 @@ class User < ApplicationRecord
   validates_presence_of :name, :email
   validates :email, email: true, uniqueness: true
 
+  ## Line 11: bcrypt gem validation
+  has_secure_password
+
   def self.except_user(id)
     all.where.not(id: id)
   end
