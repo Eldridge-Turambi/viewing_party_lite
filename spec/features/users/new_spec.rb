@@ -50,4 +50,13 @@ RSpec.describe 'New User' do
 
     expect(current_path).to eq(root_path)
   end
+
+  require 'rails_helper'
+
+  it 'sees a form to register a user account' do
+    visit '/register'
+    
+  end
+
+
 end
