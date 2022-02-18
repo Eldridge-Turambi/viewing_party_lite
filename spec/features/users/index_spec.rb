@@ -4,9 +4,9 @@ require 'rails_helper'
 
 RSpec.describe 'Landing Page' do
   before :each do
-    @eldridge = User.create!(name: 'Eldridge', email: 'eldridge@gmail.com')
-    @kevin = User.create!(name: 'Kevin', email: 'kevin@gmail.com')
-    @suzie = User.create!(name: 'Suzie', email: 'suzieq@gmail.com')
+    @eldridge = User.create!(name: 'Eldridge', email: 'eldridge@gmail.com', password_digest: 'pass123')
+    @kevin = User.create!(name: 'Kevin', email: 'kevin@gmail.com', password_digest: 'pass123')
+    @suzie = User.create!(name: 'Suzie', email: 'suzieq@gmail.com', password_digest: 'pass123')
   end
 
   it 'should list out all users' do

@@ -6,6 +6,9 @@ class User < ApplicationRecord
 
   validates_presence_of :name, :email
   validates :email, email: true, uniqueness: true
+  # validates_presence_of :password, require: true
+
+  validates_presence_of :password_digest, require: true
 
   ## Line 11: bcrypt gem validation
   has_secure_password

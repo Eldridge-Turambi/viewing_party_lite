@@ -5,6 +5,19 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def login_form
+  end
+
+  def login_user
+    user = User.find_by(email: params[:email])
+    if user && user.authenticate(params[:password])
+      flash[:success] = "Welcome, #{user.name}"
+      redirect_to user_path(user)
+    else
+      flash[:error] = "Sorry, your credentials are bad."
+    end
+  end
+
   def new
     @user = User.new
   end
@@ -28,6 +41,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

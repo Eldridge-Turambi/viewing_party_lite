@@ -4,9 +4,9 @@ require 'rails_helper'
 
 RSpec.describe User do
   before :each do
-    @eldridge = User.create!(name: 'Eldridge', email: 'eldridge@gmail.com')
-    @kevin = User.create!(name: 'Kevin', email: 'kevin@gmail.com')
-    @suzie = User.create!(name: 'Suzie', email: 'suzieq@gmail.com')
+    @eldridge = User.create!(name: 'Eldridge', email: 'eldridge@gmail.com', password: 'pass123', password_confirmation: 'pass123')
+    @kevin = User.create!(name: 'Kevin', email: 'kevin@gmail.com', password: 'pass123', password_confirmation: 'pass123')
+    @suzie = User.create!(name: 'Suzie', email: 'suzieq@gmail.com', password: 'pass123', password_confirmation: 'pass123')
   end
 
   describe 'relationships' do
@@ -18,6 +18,8 @@ RSpec.describe User do
     it { should validate_presence_of :name }
     it { should validate_presence_of :email }
     it { should validate_uniqueness_of(:email) }
+    it { should have_secure_password }
+    it { should validate_presence_of(:password_digest)}
   end
 
   describe '#methods' do
